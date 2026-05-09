@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snehalatha Reddy — ML Engineer & Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b0914;
+  --bg2:#110d1e;
+  --bg3:#16112a;
+  --lavender:#c4b5fd;
+  --sakura:#f9a8d4;
+  --soft-blue:#93c5fd;
+  --mint:#6ee7b7;
+  --text:#f8f4ff;
+  --text2:#c4b8d8;
+  --text3:#8878a8;
+  --border:rgba(196,181,253,0.12);
+  --glow:rgba(196,181,253,0.08);
+  --card:rgba(255,255,255,0.03);
+  --card-border:rgba(255,255,255,0.07);
+  --radius:16px;
+  --font-display:'Cormorant Garamond',serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-jp:'Noto Serif JP',serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.7;overflow-x:hidden}
+
+/* ── scrollbar ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(196,181,253,0.3);border-radius:2px}
+
+/* ── noise overlay ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:0.4;pointer-events:none;z-index:0}
+
+/* ── nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px);background:rgba(11,9,20,0.6);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-display);font-size:22px;font-weight:400;letter-spacing:0.02em;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--lavender)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--text3);text-decoration:none;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--lavender)}
+.nav-cta{background:rgba(196,181,253,0.1);border:1px solid rgba(196,181,253,0.25);color:var(--lavender);padding:8px 20px;border-radius:40px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none}
+.nav-cta:hover{background:rgba(196,181,253,0.2);transform:translateY(-1px)}
+
+/* ── hero ── */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:0 48px;overflow:hidden}
+.hero-orbs{position:absolute;inset:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.15}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,#c4b5fd,transparent);top:-100px;right:-100px;animation:drift1 8s ease-in-out infinite}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,#f9a8d4,transparent);bottom:-50px;left:-80px;animation:drift2 10s ease-in-out infinite}
+.orb3{width:300px;height:300px;background:radial-gradient(circle,#93c5fd,transparent);top:50%;left:40%;animation:drift3 12s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,15px)}}
+
+/* sakura particles */
+.sakura-wrap{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.petal{position:absolute;width:6px;height:6px;background:rgba(249,168,212,0.3);border-radius:50% 0 50% 0;animation:fall linear infinite}
+@keyframes fall{0%{transform:translateY(-20px) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:0.5}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+
+.hero-content{position:relative;z-index:1;max-width:800px;text-align:center;animation:heroIn 1.2s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-eyebrow{font-family:var(--font-jp);font-size:12px;letter-spacing:0.3em;text-transform:uppercase;color:var(--lavender);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:rgba(196,181,253,0.4)}
+.hero-name{font-family:var(--font-display);font-size:clamp(52px,8vw,88px);font-weight:300;line-height:1.05;letter-spacing:-0.02em;margin-bottom:8px}
+.hero-name em{font-style:italic;color:var(--lavender)}
+.hero-title{font-family:var(--font-display);font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--text2);font-style:italic;margin-bottom:24px}
+.hero-tagline{font-size:15px;color:var(--text3);max-width:480px;margin:0 auto 40px;line-height:1.8;font-weight:300}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,rgba(196,181,253,0.2),rgba(249,168,212,0.15));border:1px solid rgba(196,181,253,0.35);color:var(--lavender);padding:14px 32px;border-radius:50px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:rgba(196,181,253,0.25);transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,181,253,0.15)}
+.btn-ghost{border:1px solid var(--border);color:var(--text2);padding:14px 32px;border-radius:50px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-ghost:hover{border-color:rgba(196,181,253,0.3);color:var(--text);transform:translateY(-2px)}
+
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text3);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(196,181,253,0.4),transparent)}
+
+/* ── section base ── */
+section{padding:100px 48px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.section-label{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--lavender);margin-bottom:12px;font-family:var(--font-jp)}
+.section-title{font-family:var(--font-display);font-size:clamp(36px,5vw,56px);font-weight:300;line-height:1.1;margin-bottom:48px}
+.section-title em{font-style:italic;color:var(--lavender)}
+
+/* divider */
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(196,181,253,0.2),transparent);margin:0}
+
+/* ── about ── */
+#about .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+#about .about-img-wrap{position:relative}
+.about-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:20px;display:block}
+.about-img-placeholder{width:100%;aspect-ratio:3/4;border-radius:20px;background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--text3)}
+.profile-photo{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:20px}
+.img-frame{position:absolute;inset:-12px;border:1px solid rgba(196,181,253,0.2);border-radius:24px;pointer-events:none}
+.img-badge{position:absolute;bottom:-16px;right:-16px;background:rgba(196,181,253,0.1);backdrop-filter:blur(12px);border:1px solid rgba(196,181,253,0.25);border-radius:12px;padding:12px 16px}
+.img-badge .num{font-family:var(--font-display);font-size:28px;color:var(--lavender);display:block}
+.img-badge .lbl{font-size:11px;color:var(--text3);letter-spacing:0.1em}
+.about-text p{color:var(--text2);margin-bottom:20px;font-weight:300;font-size:15px}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.stat-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:16px;transition:all 0.3s}
+.stat-card:hover{border-color:rgba(196,181,253,0.25);background:rgba(196,181,253,0.05)}
+.stat-num{font-family:var(--font-display);font-size:32px;color:var(--lavender);display:block}
+.stat-lbl{font-size:12px;color:var(--text3);letter-spacing:0.05em}
+
+/* ── skills ── */
+#skills .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.skill-cat{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px;transition:all 0.4s}
+.skill-cat:hover{border-color:rgba(196,181,253,0.25);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+.skill-cat-icon{font-size:24px;margin-bottom:12px}
+.skill-cat-name{font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--lavender);margin-bottom:16px;font-weight:500}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text3);letter-spacing:0.05em}
+
+/* ── projects ── */
+#projects .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.proj-card{background:var(--card);border:1px solid var(--card-border);border-radius:20px;overflow:hidden;transition:all 0.4s;cursor:pointer}
+.proj-card:hover{border-color:rgba(196,181,253,0.3);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.5)}
+.proj-card.featured{grid-column:1/-1}
+.proj-img{height:200px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:60px}
+.proj-card.featured .proj-img{height:260px}
+.proj-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(11,9,20,0.9))}
+.proj-body{padding:24px}
+.proj-tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.proj-tag{font-size:10px;padding:3px 8px;border-radius:20px;letter-spacing:0.08em;text-transform:uppercase}
+.tag-ml{background:rgba(196,181,253,0.1);color:var(--lavender);border:1px solid rgba(196,181,253,0.2)}
+.tag-iot{background:rgba(110,231,183,0.1);color:var(--mint);border:1px solid rgba(110,231,183,0.2)}
+.tag-data{background:rgba(147,197,253,0.1);color:var(--soft-blue);border:1px solid rgba(147,197,253,0.2)}
+.tag-award{background:rgba(249,168,212,0.1);color:var(--sakura);border:1px solid rgba(249,168,212,0.2)}
+.proj-name{font-family:var(--font-display);font-size:22px;font-weight:400;margin-bottom:8px;line-height:1.2}
+.proj-desc{font-size:13px;color:var(--text3);line-height:1.7;margin-bottom:16px;font-weight:300}
+.proj-impact{font-size:12px;color:var(--mint);margin-bottom:16px}
+.proj-impact::before{content:'↗ '}
+.proj-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.proj-links{display:flex;gap:12px}
+.proj-link{font-size:11px;color:var(--text3);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border);padding:6px 14px;border-radius:20px;transition:all 0.3s}
+.proj-link:hover{color:var(--lavender);border-color:rgba(196,181,253,0.3)}
+
+/* ── experience ── */
+#experience .timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,rgba(196,181,253,0.4),rgba(196,181,253,0.1))}
+.timeline-item{position:relative;margin-bottom:48px}
+.timeline-dot{position:absolute;left:-36px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--lavender);box-shadow:0 0 12px rgba(196,181,253,0.4)}
+.timeline-date{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--lavender);margin-bottom:8px}
+.timeline-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px;transition:all 0.3s}
+.timeline-card:hover{border-color:rgba(196,181,253,0.25)}
+.timeline-role{font-family:var(--font-display);font-size:20px;font-weight:400;margin-bottom:4px}
+.timeline-company{font-size:13px;color:var(--lavender);margin-bottom:16px}
+.timeline-points{list-style:none}
+.timeline-points li{font-size:13px;color:var(--text2);padding:4px 0;padding-left:16px;position:relative;font-weight:300}
+.timeline-points li::before{content:'›';position:absolute;left:0;color:var(--lavender)}
+
+/* ── achievements ── */
+#achievements .ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.ach-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:20px 24px;display:flex;gap:16px;align-items:flex-start;transition:all 0.3s}
+.ach-card:hover{border-color:rgba(196,181,253,0.25);transform:translateX(4px)}
+.ach-icon{font-size:28px;flex-shrink:0}
+.ach-text .ach-name{font-size:14px;font-weight:500;margin-bottom:4px;color:var(--text)}
+.ach-text .ach-org{font-size:12px;color:var(--text3);letter-spacing:0.05em}
+.ach-text .ach-date{font-size:11px;color:var(--lavender);margin-top:4px}
+
+/* ── github ── */
+#github{text-align:center}
+#github .gh-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-top:48px}
+.gh-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:24px 32px;text-align:center}
+.gh-num{font-family:var(--font-display);font-size:40px;color:var(--lavender)}
+.gh-lbl{font-size:12px;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px}
+.gh-repos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:32px;text-align:left}
+.repo-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:16px 20px;transition:all 0.3s}
+.repo-card:hover{border-color:rgba(196,181,253,0.25)}
+.repo-name{font-size:13px;color:var(--lavender);font-weight:500;margin-bottom:6px}
+.repo-desc{font-size:12px;color:var(--text3);font-weight:300}
+.repo-lang{font-size:11px;color:var(--mint);margin-top:10px;display:flex;align-items:center;gap:6px}
+.repo-lang::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--mint);display:inline-block}
+
+/* ── contact ── */
+#contact{text-align:center}
+.contact-card{max-width:600px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);border-radius:24px;padding:48px;position:relative;overflow:hidden}
+.contact-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(196,181,253,0.06),transparent);pointer-events:none}
+.contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+.contact-link{display:flex;align-items:center;gap:8px;text-decoration:none;padding:12px 20px;border-radius:40px;border:1px solid var(--border);color:var(--text2);font-size:13px;transition:all 0.3s;letter-spacing:0.05em}
+.contact-link:hover{border-color:rgba(196,181,253,0.35);color:var(--lavender);background:rgba(196,181,253,0.05);transform:translateY(-2px)}
+.contact-link svg{width:16px;height:16px;flex-shrink:0}
+
+/* ── footer ── */
+footer{text-align:center;padding:48px;border-top:1px solid var(--border)}
+.footer-quote{font-family:var(--font-display);font-size:18px;font-style:italic;color:var(--text3);margin-bottom:12px}
+.footer-copy{font-size:12px;color:var(--text3);letter-spacing:0.1em}
+
+/* ── animations ── */
+.fade-up{opacity:0;transform:translateY(24px);transition:all 0.7s cubic-bezier(0.22,1,0.36,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ── mobile ── */
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .nav-links{display:none}
+  section{padding:60px 20px}
+  #about .about-grid{grid-template-columns:1fr}
+  #projects .projects-grid{grid-template-columns:1fr}
+  .proj-card.featured{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Sneha<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:kundurusneha4@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="max-width:none;padding:0">
+  <div class="hero-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+  <div class="sakura-wrap" id="sakura"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">ML Engineer · Developer · Researcher</div>
+    <h1 class="hero-name">Sneha<br><em>Kunduru</em></h1>
+    <p class="hero-title">Building intelligent systems, one model at a time</p>
+    <p class="hero-tagline">CS student at KARE · Turning real-world problems into elegant AI solutions · 90%+ model accuracy across every project · IEEE award winner</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="https://github.com/Sneh-04" target="_blank" class="btn-ghost">GitHub →</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-up">
+    <div class="section-label">Who I am</div>
+    <div class="section-title">Curious mind,<br><em>disciplined engineer</em></div>
+  </div>
+  <div class="about-grid fade-up">
+    <div class="about-img-wrap">
+      <div class="about-img-placeholder">
+        <img src="https://avatars.githubusercontent.com/u/205532445?v=4" alt="Snehalatha Reddy Kunduru" class="profile-photo" onerror="this.style.display='none'">
+        <div class="img-frame"></div>
+        <div class="img-badge">
+          <span class="num">8.5</span>
+          <span class="lbl">CGPA / 10.0</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p>I'm Snehalatha Reddy Kunduru — a final-year Computer Science (Data Science) student at Kalasalingam Academy of Research and Education, Tamil Nadu. I build things that matter: AI systems that detect road hazards, models that predict machine failure, and wearables that help visually impaired people move freely.</p>
+      <p>My edge isn't just technical. I bridge the gap between clean ML research and production-ready systems — I've shipped real Android apps, published research to international conferences, and earned awards from the IEEE and Dindigul District Administration.</p>
+      <p>I'm consistently drawn to problems where data meets the physical world — sensor fusion, real-time inference, edge deployment. That's where I do my best thinking.</p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-num">~90%</span>
+          <span class="stat-lbl">Model accuracy across projects</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">3+</span>
+          <span class="stat-lbl">End-to-end AI applications shipped</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">IEEE</span>
+          <span class="stat-lbl">2nd place, RAS Showcase 2.0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">2026</span>
+          <span class="stat-lbl">Conference paper accepted, EAIS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="fade-up">
+    <div class="section-label">Technical Stack</div>
+    <div class="section-title">What I build<br><em>with</em></div>
+  </div>
+  <div class="skills-grid fade-up">
+    <div class="skill-cat">
+      <div class="skill-cat-icon">🤖</div>
+      <div class="skill-cat-name">ML / AI</div>
+      <div class="skill-tags">
+        <span class="tag">YOLOv8</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Scikit-learn</span><span class="tag">Random Forest</span><span class="tag">CNNs</span><span class="tag">Sensor Fusion</span><span class="tag">Feature Engineering</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-icon">🐍</div>
+      <div class="skill-cat-name">Programming</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">OpenCV</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-icon">☁️</div>
+      <div class="skill-cat-name">Cloud & Data</div>
+      <div class="skill-tags">
+        <span class="tag">GCP</span><span class="tag">BigQuery</span><span class="tag">Pub/Sub</span><span class="tag">Dataflow</span><span class="tag">Cloud Functions</span><span class="tag">Tableau</span><span class="tag">Streamlit</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-icon">⚙️</div>
+      <div class="skill-cat-name">Tools & Systems</div>
+      <div class="skill-tags">
+        <span class="tag">FastAPI</span><span class="tag">Git / GitHub</span><span class="tag">IoT</span><span class="tag">Embedded Systems</span><span class="tag">GPS API</span><span class="tag">React</span><span class="tag">Docker</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="fade-up">
+    <div class="section-label">Selected Work</div>
+    <div class="section-title">Projects that<br><em>solve real problems</em></div>
+  </div>
+  <div class="projects-grid fade-up">
+
+    <!-- FEATURED -->
+    <div class="proj-card featured">
+      <div class="proj-img" style="background:linear-gradient(135deg,#1a0f2e,#0f1a2e,#0a1a0f)">
+        <span style="z-index:1;position:relative">🛡️</span>
+        <div class="proj-img-overlay"></div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tag-row">
+          <span class="proj-tag tag-ml">ML / AI</span>
+          <span class="proj-tag tag-data">Computer Vision</span>
+          <span class="proj-tag tag-award">Conference Paper</span>
+        </div>
+        <div class="proj-name">RoadGuard-AI — Real-Time Hazard Detection</div>
+        <div class="proj-desc">A dual-input inference system fusing YOLOv8 visual detection on 1,000+ road images with real-time accelerometer sensor data to classify both visual and physical hazards simultaneously. GPS-tagged, timestamped driver alerts fire within milliseconds. Backed by a FastAPI backend, React admin dashboard, and a production Android app.</div>
+        <div class="proj-impact">Achieved ~90% accuracy. Reduced false-positive rate measurably vs. single-modality baseline. Published to EAIS 2026 (Submission #30).</div>
+        <div class="proj-tech">
+          <span class="tag">Python</span><span class="tag">YOLOv8</span><span class="tag">TensorFlow/Keras</span><span class="tag">OpenCV</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">GPS API</span><span class="tag">Accelerometer</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/Sneh-04/RoadGuard-AI" target="_blank" class="proj-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MACHINE FAILURE -->
+    <div class="proj-card">
+      <div class="proj-img" style="background:linear-gradient(135deg,#1a1a0f,#0f1a1a)">
+        <span style="z-index:1;position:relative">⚙️</span>
+        <div class="proj-img-overlay"></div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tag-row">
+          <span class="proj-tag tag-ml">ML</span><span class="proj-tag tag-data">Predictive Analytics</span>
+        </div>
+        <div class="proj-name">Machine Failure Prediction System</div>
+        <div class="proj-desc">Random Forest classifier on industrial sensor data. Identified the top 5 fault-correlated signals via feature importance, achieving ~90% prediction accuracy. Deployed as an interactive Streamlit dashboard with live sensor input and real-time failure probability scoring — readable by non-technical operators.</div>
+        <div class="proj-impact">90% prediction accuracy. Operational from Feb 2026.</div>
+        <div class="proj-tech">
+          <span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">Scikit-learn</span><span class="tag">Streamlit</span><span class="tag">Pandas</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/Sneh-04/Machine_Failure_Prediction" target="_blank" class="proj-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISIONMATE -->
+    <div class="proj-card">
+      <div class="proj-img" style="background:linear-gradient(135deg,#1a0f1a,#0f1a10)">
+        <span style="z-index:1;position:relative">👁️</span>
+        <div class="proj-img-overlay"></div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tag-row">
+          <span class="proj-tag tag-iot">IoT</span><span class="proj-tag tag-award">Award Winner</span>
+        </div>
+        <div class="proj-name">VisionMate — Assistive Wearable</div>
+        <div class="proj-desc">Wearable IoT device with multi-sensor obstacle detection and wireless caretaker alerts, enabling independent mobility for visually impaired users. Recognized for SDG impact with a Certificate of Merit from Dindigul District Administration 2026 and 2nd Place at IEEE RAS Project Showcase 2.0.</div>
+        <div class="proj-impact">🏆 Certificate of Merit + IEEE RAS 2nd Place.</div>
+        <div class="proj-tech">
+          <span class="tag">IoT</span><span class="tag">Embedded Systems</span><span class="tag">Ultrasonic Sensors</span><span class="tag">Real-Time Alerts</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRADER SENTIMENT -->
+    <div class="proj-card">
+      <div class="proj-img" style="background:linear-gradient(135deg,#0f1520,#1a0f10)">
+        <span style="z-index:1;position:relative">📈</span>
+        <div class="proj-img-overlay"></div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-tag-row">
+          <span class="proj-tag tag-data">NLP</span><span class="proj-tag tag-ml">Sentiment Analysis</span>
+        </div>
+        <div class="proj-name">Trader Sentiment Analysis</div>
+        <div class="proj-desc">NLP pipeline to classify trader sentiment from financial text data, informing market signal detection. Exploratory data analysis and model training via Jupyter Notebook.</div>
+        <div class="proj-tech">
+          <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Jupyter</span><span class="tag">Pandas</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/Sneh-04/Trader_sentiment_analysis" target="_blank" class="proj-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="fade-up">
+    <div class="section-label">Experience</div>
+    <div class="section-title">Where I've<br><em>grown</em></div>
+  </div>
+  <div class="timeline fade-up">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Jul 2024 – Aug 2024</div>
+      <div class="timeline-card">
+        <div class="timeline-role">Data Science Intern</div>
+        <div class="timeline-company">Coratia Technologies Pvt. Ltd. (via Teachnook) · Remote</div>
+        <ul class="timeline-points">
+          <li>Executed end-to-end data preprocessing and EDA on real-world datasets — missing value handling, outlier removal, feature encoding — improving model-ready data quality across multiple projects.</li>
+          <li>Implemented and optimized classification and regression models using Scikit-learn with iterative hyperparameter tuning; documented findings in structured industry-aligned reports.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--sakura);box-shadow:0 0 12px rgba(249,168,212,0.4)"></div>
+      <div class="timeline-date">2023 – 2027</div>
+      <div class="timeline-card">
+        <div class="timeline-role">B.Tech in Computer Science (Data Science)</div>
+        <div class="timeline-company">Kalasalingam Academy of Research and Education · Tamil Nadu · CGPA 8.5/10</div>
+        <ul class="timeline-points">
+          <li>Research paper submitted to EAIS 2026 international conference on AI systems.</li>
+          <li>Led development of RoadGuard-AI as a final-year capstone project with industry-level architecture.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="fade-up">
+    <div class="section-label">Recognition</div>
+    <div class="section-title">Awards &<br><em>certifications</em></div>
+  </div>
+  <div class="ach-grid fade-up">
+    <div class="ach-card">
+      <div class="ach-icon">🏆</div>
+      <div class="ach-text">
+        <div class="ach-name">2nd Place — IEEE RAS Project Showcase 2.0</div>
+        <div class="ach-org">VisionMate · IEEE Robotics & Automation Society</div>
+        <div class="ach-date">Sep 2025</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🎖️</div>
+      <div class="ach-text">
+        <div class="ach-name">Certificate of Merit — District Innovation Showcase</div>
+        <div class="ach-org">SDG Impact · Dindigul District Administration</div>
+        <div class="ach-date">2026</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">📄</div>
+      <div class="ach-text">
+        <div class="ach-name">Research Paper — EAIS 2026</div>
+        <div class="ach-org">RoadGuard-AI · EasyChair Submission #30</div>
+        <div class="ach-date">2026</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">☁️</div>
+      <div class="ach-text">
+        <div class="ach-name">Gen AI Academy 2.0 Data Track</div>
+        <div class="ach-org">Google Cloud</div>
+        <div class="ach-date">2025</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🐍</div>
+      <div class="ach-text">
+        <div class="ach-name">Data Analysis with Python</div>
+        <div class="ach-org">Infosys Springboard</div>
+        <div class="ach-date">Mar 2026</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">📊</div>
+      <div class="ach-text">
+        <div class="ach-name">Data Analytics Job Simulation</div>
+        <div class="ach-org">Deloitte / Forage</div>
+        <div class="ach-date">Feb 2026</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">🔮</div>
+      <div class="ach-text">
+        <div class="ach-name">OCI AI Foundations Associate</div>
+        <div class="ach-org">Oracle Cloud Infrastructure</div>
+        <div class="ach-date">2023</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">📈</div>
+      <div class="ach-text">
+        <div class="ach-name">DA with Tableau + Statistics for DS</div>
+        <div class="ach-org">Infosys Springboard (6 courses)</div>
+        <div class="ach-date">Mar 2026</div>
+      </div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-icon">⚡</div>
+      <div class="ach-text">
+        <div class="ach-name">Power BI + SQL (GFG)</div>
+        <div class="ach-org">Sneha PowerBI Cert · GeeksForGeeks SQL</div>
+        <div class="ach-date">2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- GITHUB STATS -->
+<section id="github">
+  <div class="fade-up">
+    <div class="section-label">Open Source</div>
+    <div class="section-title">GitHub &<br><em>contributions</em></div>
+  </div>
+  <div class="gh-stats fade-up">
+    <div class="gh-card">
+      <div class="gh-num">7</div>
+      <div class="gh-lbl">Repositories</div>
+    </div>
+    <div class="gh-card">
+      <div class="gh-num">3+</div>
+      <div class="gh-lbl">ML Projects</div>
+    </div>
+    <div class="gh-card">
+      <div class="gh-num">4</div>
+      <div class="gh-lbl">Languages Used</div>
+    </div>
+  </div>
+  <div class="gh-repos fade-up" style="margin-top:32px">
+    <div class="repo-card">
+      <div class="repo-name">RoadGuard-AI</div>
+      <div class="repo-desc">Real-time road hazard detection — YOLOv8 + sensor fusion + FastAPI backend</div>
+      <div class="repo-lang">Python</div>
+    </div>
+    <div class="repo-card">
+      <div class="repo-name">Machine_Failure_Prediction</div>
+      <div class="repo-desc">Industrial predictive maintenance with Random Forest and Streamlit dashboard</div>
+      <div class="repo-lang">Python</div>
+    </div>
+    <div class="repo-card">
+      <div class="repo-name">Trader_sentiment_analysis</div>
+      <div class="repo-desc">NLP-based sentiment classification on financial text data</div>
+      <div class="repo-lang">Jupyter Notebook</div>
+    </div>
+    <div class="repo-card">
+      <div class="repo-name">Wildfire_Prediction</div>
+      <div class="repo-desc">Environmental ML model for early wildfire risk prediction</div>
+      <div class="repo-lang">Python</div>
+    </div>
+    <div class="repo-card">
+      <div class="repo-name">Stockmarket-dashboard</div>
+      <div class="repo-desc">Interactive stock market analysis and visualization notebook</div>
+      <div class="repo-lang">Jupyter Notebook</div>
+    </div>
+    <div class="repo-card">
+      <div class="repo-name">roadguard-backend</div>
+      <div class="repo-desc">FastAPI inference server powering the RoadGuard mobile app</div>
+      <div class="repo-lang">Python</div>
+    </div>
+  </div>
+  <div style="margin-top:32px;text-align:center">
+    <a href="https://github.com/Sneh-04" target="_blank" class="btn-ghost">View All on GitHub →</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-up">
+    <div class="section-label">Let's Connect</div>
+    <div class="section-title">Open to<br><em>opportunities</em></div>
+  </div>
+  <div class="contact-card fade-up">
+    <p style="color:var(--text2);font-size:15px;font-weight:300;max-width:440px;margin:0 auto 8px;line-height:1.8">I'm actively looking for internships and full-time roles in ML engineering, data science, and AI systems. If you're building something meaningful — let's talk.</p>
+    <p style="color:var(--lavender);font-size:13px;letter-spacing:0.05em">📍 Andhra Pradesh, India &nbsp;·&nbsp; Open to remote / relocation</p>
+    <div class="contact-links">
+      <a href="mailto:kundurusneha4@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        kundurusneha4@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/sneha-kunduru" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Sneh-04" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="tel:+919346651060" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.38 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +91-9346651060
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-quote">"The most dangerous phrase is: we've always done it this way."</p>
+  <p class="footer-copy">© 2026 Snehalatha Reddy Kunduru · Built with intention</p>
+</footer>
+
+<script>
+// sakura petals
+const sw = document.getElementById('sakura');
+for(let i=0;i<18;i++){
+  const p=document.createElement('div');
+  p.className='petal';
+  p.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*-200}px;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;opacity:${0.2+Math.random()*0.5}`;
+  sw.appendChild(p);
+}
+
+// intersection observer fade-up
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
